@@ -1,1 +1,69 @@
 @import "tailwindcss";
+
+@theme {
+  --color-night: #0e0e10;
+  --color-ink: #f2efe8;
+  --color-body: #e4e0d8;
+  --color-soft: #c9c5bd;
+  --color-muted: #b3afa7;
+  --color-subtle: #8e8a83;
+  --color-line: #3a3a40;
+  --color-gold: #d1a458;
+  --color-gold-hover: #e0b566;
+  --color-gold-ink: #17130b;
+  --color-gold-deep: #2a2418;
+  --color-card: #18181c;
+  --color-card-line: #2a2a30;
+  --color-chip: #222228;
+  --color-avatar: #22222a;
+  --color-dial: #16161a;
+  --color-dial-line: #2e2e34;
+  --color-online: #3dd68c;
+  --color-danger: #f07a7e;
+  --color-danger-deep: #3a1b1d;
+
+  --animate-drift: drift var(--dur) ease-in-out infinite;
+  --animate-ring-pulse: ring-pulse 4.5s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(var(--dx), var(--dy));
+    }
+  }
+
+  @keyframes ring-pulse {
+    0% {
+      transform: scale(0.55);
+      opacity: 0.55;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+}
+
+@theme inline {
+  --font-display: var(--font-unbounded), "Arial Black", sans-serif;
+  --font-sans: var(--font-manrope), "Segoe UI", system-ui, sans-serif;
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at 70% 45%, #000 20%, transparent 75%);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-night text-ink font-sans antialiased;
+  }
+}
